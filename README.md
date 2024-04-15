@@ -13,7 +13,10 @@ hist(x, main = "Histogram", xlab = "Sales", ylab = "afternoon")
 # Two populations with proportions in R 
 n <- c(175,150) #sample size z pierwszej grupy i drugiej
 m  <- c(54,36)
-test_proportions <- prop.test(m,n, alternative = "greater") #greater bo to right-sided test
+test_proportions <- prop.test(m,n, alternative = "greater", correct = FALSE) #greater bo to right-sided test, correct should be false why? nie wiem
 test_proportions #wykonuje funkcje pokazuje dane
-sqrt(test_proportions$statistic) #podobnie
+sqrt(test_proportions$statistic) #podobnie 
+
+^^^ x-squared jest tutaj inne niz w excelu, wiec trzeba napisac dodt linijjke kodu 
+
 
