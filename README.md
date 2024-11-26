@@ -70,3 +70,39 @@ inspect(rules.highest)
 plot(rules.highest, method="graph")
 
 
+
+# postaci binarne, broadcasy, IP itd z przedmiotu MONITOROWANIE I ZARZĄDZANIE SIECIAMI KOMPUTEROWYMI
+
+Każdy adres składa się z cztrech oktetów (8 liiczb w b). Każdy z nich reprezentuje liczbe w wartości od 0 do 255. 
+
+# 1. Osiedle i mieszkania – co to za IP?
+Adres IP, np. 192.168.1.0/24, to osiedle z mieszkaniami:
+
+192.168.1.0 – adres osiedla (początek adresu).
+# /24 oznacza maskę: pierwsze 24 bity to ulica (sieć), a pozostałe bity to numer mieszkania (hosty).
+Przy masce /24 masz 256 mieszkań w tym osiedlu (2 do potęgi 8 = 256).
+
+Jeśli jest więcej bitów na hosty, to oznacza, że w tej sieci może być więcej użytkowników (hostów), które mogą jednocześnie korzystać z tej sieci.
+
+Bity na sieć i bity na hosty
+
+Bity na sieć: Określają, do jakiej sieci należy adres IP. Są stałe i identyczne dla wszystkich urządzeń w tej samej sieci.
+Bity na hosty: Pozwalają przypisać adresy różnym urządzeniom w tej sieci. Każda unikalna kombinacja bitów hosta to inny komputer, drukarka, telefon itp.
+
+python code - przekształcanie postaci zwykłej do postaci binarnej, IP ADDRESS
+
+def ip_to_binary(ip_address):
+    # Podziel adres IP na oktety
+    octets = ip_address.split('.')
+    # Przekształć każdy oktet na 8-bitowy kod binarny
+    binary_octets = [format(int(octet), '08b') for octet in octets]
+    # Połącz binarne oktety w wynikowy ciąg
+    binary_ip = '.'.join(binary_octets)
+    return binary_ip
+
+# Przykład
+ip_address = "192.168.0.1"
+binary_result = ip_to_binary(ip_address)
+print(f"Adres IP {ip_address} w binarnym: {binary_result}")
+
+Kod binarny ma mieć zawsze 8 cyfr (dodaje zera z przodu, jeśli liczba ma mniej bitów).
